@@ -5,7 +5,6 @@ from django.http import JsonResponse
 def speed_test_view(request):
     if request.method == 'POST':
         results = run_speed_test()
-        print(results)
         return JsonResponse(results)
     return render(request, 'test.html')
 
