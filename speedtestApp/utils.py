@@ -1,4 +1,3 @@
-# speedtest/utils.py
 import speedtest
 
 def run_speed_test():
