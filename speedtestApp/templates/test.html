@@ -195,7 +195,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                let totalSpeed = (data.download_speed + data.upload_speed) / 2;
+                // let totalSpeed = (data.download_speed + data.upload_speed) / 2;
+                let totalSpeed = data.download_speed;
                 document.querySelector('.content').innerHTML = totalSpeed.toFixed(2) + '<small>Mbps</small>';
                 document.querySelector('.loader-content').classList.remove('hide');
                 document.querySelector('.loader-content').classList.add('result');
