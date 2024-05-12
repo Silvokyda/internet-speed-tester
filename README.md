@@ -2,7 +2,7 @@
 
 Django Internet Speed Tester is a web application built with Django that allows users to test their internet speed. It provides functionalities to measure download and upload speeds as well as ping.
 
-![Demo](media/demo.png)
+![Demo](demo/demo.png)
 
 ## Features
 
