@@ -1,106 +1,54 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+# Django Internet Speed Tester
 
-# Django + Vercel
+Django Internet Speed Tester is a web application built with Django that allows users to test their internet speed. It provides functionalities to measure download and upload speeds as well as ping.
 
-This example shows how to use Django 4 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## Features
 
-## Demo
+- Measure download speed
+- Measure upload speed
+- Check ping latency
+- User-friendly interface
+- Historical speed test results
 
-https://django-template.vercel.app/
+## Installation
 
-## How it Works
+1. Clone the repository:
 
-Our Django application, `example` is configured as an installed application in `api/settings.py`:
+    ```bash
+    git clone https://github.com/Silvokyda/internet-speed-tester.git
+    ```
 
-```python
-# api/settings.py
-INSTALLED_APPS = [
-    # ...
-    'example',
-]
-```
+2. Install dependencies:
 
-We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-```python
-# api/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
-```
+3. Run migrations:
 
-The `wsgi` module must use a public variable named `app` to expose the WSGI application:
+    ```bash
+    python manage.py migrate
+    ```
 
-```python
-# api/wsgi.py
-app = get_wsgi_application()
-```
+4. Start the development server:
 
-The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `api.wsgi` module:
+    ```bash
+    python manage.py runserver
+    ```
 
-```python
-# api/settings.py
-WSGI_APPLICATION = 'api.wsgi.app'
-```
+5. Access the application at `http://localhost:8000`
 
-There is a single view which renders the current time in `example/views.py`:
+## Usage
 
-```python
-# example/views.py
-from datetime import datetime
+1. Navigate to the home page.
+2. Click on the "Start Speed Test" button.
+3. Wait for the test to complete.
+4. View the results displayed on the page.
 
-from django.http import HttpResponse
+## Contributing
 
+Contributions are welcome! Please open an issue or submit a pull request if you find any bugs or have any suggestions for improvements.
 
-def index(request):
-    now = datetime.now()
-    html = f'''
-    <html>
-        <body>
-            <h1>Hello from Vercel!</h1>
-            <p>The current time is { now }.</p>
-        </body>
-    </html>
-    '''
-    return HttpResponse(html)
-```
+## License
 
-This view is exposed a URL through `example/urls.py`:
-
-```python
-# example/urls.py
-from django.urls import path
-
-from example.views import index
-
-
-urlpatterns = [
-    path('', index),
-]
-```
-
-Finally, it's made accessible to the Django server inside `api/urls.py`:
-
-```python
-# api/urls.py
-from django.urls import path, include
-
-urlpatterns = [
-    ...
-    path('', include('example.urls')),
-]
-```
-
-This example uses the Web Server Gateway Interface (WSGI) with Django to enable handling requests on Vercel with Serverless Functions.
-
-## Running Locally
-
-```bash
-python manage.py runserver
-```
-
-Your Django application is now available at `http://localhost:8000`.
-
-## One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
